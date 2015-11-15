@@ -1,0 +1,201 @@
+%        File: char.tex
+%     Created: Tue Jul 29 05:00 PM 2014 C
+% Last Change: Tue Jul 29 05:00 PM 2014 C
+%
+\documentclass[]{article}
+\usepackage[a4paper,top=45mm,left=22mm,right=22mm]{geometry}
+%%% LuaTex Pakete
+\usepackage[log-declarations=false]{xparse}
+\usepackage[quiet]{fontspec}
+\usepackage{polyglossia}
+
+%%% Spache und Schrift
+\setmainlanguage{german}
+
+\setmainfont{CasablancaAntique}
+\setmonofont{Liberation Mono}
+\newfontfamily\titlefont{Percolator Expert}
+
+%%% Formatierungspakete
+\usepackage{wallpaper}
+\usepackage{tabu}
+\usepackage{multicol}
+
+\usepackage{vamp}
+
+\usepackage{adjustbox}
+
+\begin{document}
+
+
+\large
+\setlength{\wpXoffset}{0pt}
+\setlength{\wpYoffset}{1em}
+%\ThisULCornerWallPaper{0.95}{border.png}
+\ThisCenterWallPaper{0.95}{border.png}
+\setCatTitleFont{\Huge\titlefont}
+\setLine{border2}
+
+\noindent
+\begin{tabu} to \textwidth{@{}X[l] X[l] X[l]@{}}
+  \begin{tabu}{@{}>{\metaKeyFont{}}X[-1,l] >{\metaValueFont{}}X[-1,l] @{}}
+    Name & Max\\
+    & Mustermann\\
+    Spieler & Lena\\
+    Erzeuger & van Hagen\\
+  \end{tabu}
+  &
+  \begin{tabu}{@{}>{\metaKeyFont{}}X[-1,l] >{\metaValueFont{}}X[-1,l] @{}}
+    Chronik & Amsterdam\\
+    Wesen & Sadist\\
+    Verhalten & Direktor\\
+    Clan & Toreador\\
+  \end{tabu}
+  &
+  \begin{tabu}{@{}>{\metaKeyFont{}}X[-1,l] >{\metaValueFont{}}X[-1,l] @{}}
+    Generation & 13\\
+    Zuflucht & Coffee Shop\\
+    Konzept & Drogenhändler\\
+    Sekte & Anarchen
+  \end{tabu}
+\end{tabu}
+
+\vampline{Attribute}
+\noindent
+\begin{tabu}{@{}X@{\,} X@{\,} X@{}}
+  \rowfont[c]{\subcatFont{}}
+  Körperlich & Gesellschaftlich & Geistig\\
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Körperkraft & \circles[6]{4}\\
+    Geschick & \circles{2}\\
+    Widerstand & \circles{5}
+  \end{tabu}
+  &
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Charisma & \circles{1}\\
+    Manipulation & \circles{2}\\
+    Erscheinungsbild & \circles{2}
+  \end{tabu}
+  &
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Wahrnehmung & \circles{3}\\
+    Intelligenz & \circles{4}\\
+    Geistesschärfe & \circles{3}
+  \end{tabu}
+\end{tabu}
+\vampline{Fähigkeiten}
+\noindent
+\begin{tabu}{@{}X@{\,} X@{\,} X@{}}
+  \rowfont[c]{\subcatFont{}}
+  Talente & Fertigkeiten & Kenntnisse\\
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Aufmerksamkeit & \circles{2}\\
+    Ausdruck & \circles{4}\\
+    Ausflüchte & \circles{0}\\
+    Ausweichen & \circles{4}\\
+    Einschüchtern & \circles{3}\\
+    Empathie & \circles{2}\\
+    Handgemenge & \circles{0}\\
+    Sportlichkeit & \circles{1}\\
+    Szenekenntnis & \circles{3}
+  \end{tabu}
+  &
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Etikette & \circles{2}\\
+    Fahren & \circles{3}\\
+    Handwerk & \circles{0}\\
+    Nahkampf & \circles{0}\\
+    Schusswaffen & \circles{2}\\
+    Sicherheit & \circles{0}\\
+    Tierkunde & \circles{0}\\
+    Überleben & \circles{3}\\
+    Vortrag & \circles{1}
+  \end{tabu}
+  &
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Akademisches Wissen & \circles{1}\\
+    Computer & \circles{1}\\
+    Finanzen & \circles{1}\\
+    Gesetzeskenntnis & \circles{0}\\
+    Linguistik & \circles{1}\\
+    Medizin & \circles{1}\\
+    Nachforschungen & \circles{0}\\
+    Okkultismus & \circles{0}\\
+    Politik & \circles{0}
+  \end{tabu}
+\end{tabu}
+
+\vampline{Tugenden}
+\noindent
+\begin{tabu}{@{}X@{\,} X@{\,} X@{}}
+  \begin{tabu}{X[c]}
+    \humanityFont{}Menschlichkeit\\
+    \humanityCircles{4}
+  \end{tabu}
+  &
+  \begin{tabu}{X[c]}
+    \humanityFont{}Willenskraft\\
+    \humanityCircles{7}\\
+    \willpowerSquares{}
+  \end{tabu}
+  &
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Gewissen & \circles{2}\\
+    Selbstbeherrschung & \circles{4}\\
+    Mut & \circles{4}
+  \end{tabu}
+\end{tabu}
+\noindent
+\vampline{Vorteile}
+\begin{tabu}{@{}X@{\,} X@{\,} X@{}}
+  \rowfont[c]{\subcatFont{}}
+  Disziplinen & Hintergründe & Andere\\
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Auspex & \circles{2}\\
+    Geschwindigkeit & \circles{4}\\
+    Präsenz & \circles{0}
+  \end{tabu}
+  &
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+    Gefolgsleute & \circles{2}\\
+    Ressourcen & \circles{3}
+  \end{tabu}
+  &
+  \begin{tabu}{@{\,}>{\traitFont{}}X[l]@{} @{}X[-1,r]@{\,}}
+  \end{tabu}
+\end{tabu}
+\noindent
+\emptyVampline{border2.png}
+\noindent
+\begin{tabu}{@{}X@{\,} X@{\,} X@{}}
+  \begin{tabu} to \linewidth{X}
+    \rowfont[c]{\meritsTitleFont{}} Vorzüge\\
+    \begin{tabu} to \linewidth{>{\meritCostFont}X[r, -1] >{\meritFont}X[l, -1]}
+      3 & Eiserner Wille\\
+      5 & Hans Dampf in allen Gassen
+    \end{tabu}
+  \end{tabu}
+  &
+  \begin{tabu}{@{} X @{}}
+    \rowfont[c]{\bloodpoolTitleFont}
+    Blutvorrat\\
+    \bloodpool{15}\\
+    \rowfont[c]{\healthTitleFont}
+    Gesundheit\\
+    \begin{health}{7}
+      \rowfont[c]{\healthPenaltyFont}
+      & -1 & -1 & -2 & -2 & -5 & \\
+    \end{health}
+  \end{tabu}
+  &
+  \begin{tabu} to \linewidth{X}
+    \rowfont[c]{\meritsTitleFont{}} Schwächen\\
+    \begin{tabu} to \linewidth{>{\meritCostFont}X[r, -1] >{\meritFont}X[l, -1]}
+      1 & Abgestoßen von Knoblauch\\
+      \\\hline\hline
+      \multicolumn{2}{c}{{\clanFlawFont{}Angezogen von Schönheit}}\\
+    \end{tabu}
+  \end{tabu}
+\end{tabu}
+\end{document}
+

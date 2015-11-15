@@ -1,0 +1,94 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{vamp}[2013/01/13 Custom Package]
+
+\RequirePackage{luacode}
+
+\directlua{vamp = require ('vamp')}
+
+\newsavebox\vamp@titleBox{}
+\newsavebox{\vamp@lineBox}
+\newlength{\vamp@lineHeight}
+\newlength{\vamp@catTitleEx}
+\newlength{\vamp@skipLength}
+\newcommand{\vamp@catTitleFont}{\Huge}
+\newcommand{\vamp@updateSkipLength}{%
+  \setlength{\vamp@skipLength}{-\baselineskip}%
+  \addtolength{\vamp@skipLength}{-0.5\vamp@lineHeight}%
+  \addtolength{\vamp@skipLength}{0.5\vamp@catTitleEx}%
+}
+
+\newcommand{\setLine}[1]{%
+  \savebox{\vamp@lineBox}{\adjustimage{width=\linewidth}{#1}}%
+  \settoheight{\vamp@lineHeight}{\usebox{\vamp@lineBox}}%
+  \vamp@updateSkipLength{}%
+}
+\newcommand{\setCatTitleFont}[1]{%
+  \renewcommand{\vamp@catTitleFont}{#1}%
+  \settoheight{\vamp@catTitleEx}{\vamp@catTitleFont{}x}%
+  \vamp@updateSkipLength{}%
+}
+\newcommand{\vampLine}[1]{%
+  \savebox{\vamp@titleBox}{%
+    \vamp@catTitleFont%
+    \adjustbox{margin=0.5ex 0pt 0.5ex 0pt,bgcolor=white,center}{#1}%
+  }%
+  ~\\
+  \noindent%
+  \usebox{\vamp@lineBox}%
+  \\[-\baselineskip]~\\[\vamp@skipLength]%
+  \usebox{\vamp@titleBox}~\\[1ex]%
+}
+
+\newcommand{\circleFont}{\ttfamily\Large}
+\newcommand{\bigCircleFont}{\ttfamily\huge}
+\newcommand{\traitFont}{\rmfamily\large}
+\newcommand{\metaKeyFont}{\titlefont\large}
+\newcommand{\metaValueFont}{\rmfamily\large}
+\newcommand{\humanityFont}{\rmfamily\Large}
+\newcommand{\subcatFont}{\titlefont\LARGE}
+\newcommand{\meritsTitleFont}{\titlefont\LARGE}
+\newcommand{\clanFlawFont}{\rmfamily\Large}
+\newcommand{\meritCostFont}{\rmfamily\Large}
+\newcommand{\meritFont}{\rmfamily\Large}
+\newcommand{\bloodpoolTitleFont}{\titlefont\LARGE}
+\newcommand{\bloodpoolSquareFont}{\ttfamily\LARGE}
+\newcommand{\healthTitleFont}{\titlefont\LARGE}
+\newcommand{\healthSquareFont}{\ttfamily\LARGE}
+\newcommand{\healthPenaltyFont}{\rmfamily\Large}
+
+\newcommand{\circles}[2][5]{\directlua{vamp.makeCircles (\luastring{#2}, \luastring{#1})}}
+\newcommand{\humanityCircles}[1]{\directlua{vamp.makeHumanityCircles (\luastring{#1})}}
+
+\newcommand{\willpowerSquares}{\directlua{vamp.makeWillpowerSquares ()}}
+
+\newsavebox\MBox{}
+\newenvironment{Minipage}[1]{%
+  \begin{lrbox}{\MBox}%
+    \begin{minipage}{#1}}{%
+    \end{minipage}%
+  \end{lrbox}%
+  \makebox(0,0){\put(0,0){\includegraphics[width=\wd\MBox]{border2.png}}}%
+  \usebox\MBox{}%
+}
+
+%\newcommand{\vampline}[1]{~\\[2mm]\noindent{}\begin{Minipage}{\textwidth{}}%
+    %\centering{}\colorbox{white}{\Huge{}{\titlefont{}#1}}\end{Minipage}%
+%}
+
+\newcommand{\vampline}[1]{\vampLine{#1}}
+
+\newcommand{\emptyVampline}[1]{\includegraphics[width=\linewidth]{#1}}
+
+\newcommand{\bloodpool}[1]{\directlua{vamp.makeBloodpool (\luastring{#1})}}
+
+\newenvironment{health}[1]{%
+  \directlua{vamp.makeHealth (\luastring{#1})}}%
+{\directlua{vamp.endHealth ()}}
+
+%\newcommand{\vampline}[1]{%
+%\begin{adjustbox}{minipage=\textwidth,fbox,bgimage={margin=0pt 5pt 0pt 5pt,valign=B}{border2}}
+  %\begin{centering}
+    %\Huge\titlefont{}\hfill\colorbox{white}{#1}\hfill
+  %\end{centering}
+%\end{adjustbox}}
+\endinput
